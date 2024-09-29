@@ -13,7 +13,11 @@
     "git",
     "git-version"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "archiver": "^2.1.1",
+    "extract-zip": "^1.6.6"
+  },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "eslint": "^8.57.0",

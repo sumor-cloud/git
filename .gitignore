@@ -9,4 +9,8 @@ tmp/
 output/
 
 # runtime config
-ssl/
+./ssl/
+
+# config
+/config/
+/test/config/
