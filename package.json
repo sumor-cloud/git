@@ -1,17 +1,17 @@
 {
-  "name": "@sumor/git-version",
+  "name": "@sumor/git-builder",
   "description": "A git version library, easily packaging version and generate specific package with env.",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "sumor-cloud/git-version",
+  "repository": "sumor-cloud/git-builder",
   "author": "Sumor Cloud Ltd",
-  "homepage": "https://sumor.cloud/git-version",
+  "homepage": "https://sumor.cloud/git-builder",
   "type": "module",
   "main": "./src/index.js",
   "exports": "./src/index.js",
   "keywords": [
     "git",
-    "git-version"
+    "git-builder"
   ],
   "dependencies": {
     "fs-extra": "^11.2.0",
@@ -40,8 +40,8 @@
   "scripts": {
     "lint": "eslint .",
     "autofix": "eslint --fix . && prettier --write . && npm audit fix --force",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testMatch='**/test/**/*.test.js'",
-    "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --testMatch='**/test/**/*.test.js'",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testMatch='**/*.test.js'",
+    "coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --testMatch='**/*.test.js'",
     "push-tag": "git push && git push --tags",
     "publish-beta": "npm version prerelease --preid beta && npm run push-tag",
     "publish-release-patch": "npm version patch && npm run push-tag",

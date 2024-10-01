@@ -21,6 +21,6 @@
   "coverageDirectory": "output/coverage",
   "coverageReporters": ["text-summary", "html"],
   "collectCoverageFrom": ["src/**/*.js"],
-  "testPathIgnorePatterns": ["node_modules", "output", "static", "dist", "tmp"],
-  "coveragePathIgnorePatterns": ["node_modules", "output", "static", "dist", "tmp"]
+  "testPathIgnorePatterns": ["node_modules", "output", "static", "dist", "tmp", "old"],
+  "coveragePathIgnorePatterns": ["node_modules", "output", "static", "dist", "tmp", "old"]
 }

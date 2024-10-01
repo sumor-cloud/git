@@ -13,7 +13,7 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Install NPM dependencies
-        run: npm i @sumor/git-version
+        run: npm i @sumor/git-builder
       - name: Check dependencies size
         run: du -sh node_modules
       - name: Dependency Check
