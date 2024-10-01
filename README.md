@@ -41,10 +41,16 @@ please change the following code in your `package.json` file:
 import gitBuilder from '@sumor/git-builder'
 
 const result = await gitBuilder({
+  // git url and credentials
   url: '<git url>', // mandatory
-  username: '<git username>', // mandatory
-  password: '<git password>', // mandatory
+  token: '<git token>', // mandatory, if username and password are not provided
+  username: '<git username>', // mandatory, if token is not provided
+  password: '<git password>', // mandatory, if token is not provided
+
+  // target commit
   target: '<target commit>', // mandatory, can be a branch or a tag or a commit
+
+  // post actions
   assets: [
     // optional, it will be copied to the git project root path
     '<asset 1 path>',

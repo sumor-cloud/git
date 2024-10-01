@@ -1,10 +1,6 @@
 import { exec } from 'child_process'
 
-export default (
-  execString,
-  parameter
-  // logCallback
-) =>
+export default (execString, parameter) =>
   new Promise((resolve, reject) => {
     const childProcess = exec(execString, parameter)
     let log = ''
