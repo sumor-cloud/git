@@ -11,8 +11,7 @@ function setGitConfigIfNotSetSync(key, defaultValue) {
   try {
     configValue = execSync(`git config --global --get ${key}`, { encoding: 'utf8' }).trim()
   } catch (error) {
-    console.error(`Error getting git config for ${key}:`, error)
-    return
+    configValue = ''
   }
 
   if (configValue === '') {
