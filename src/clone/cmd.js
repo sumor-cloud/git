@@ -1,34 +1,30 @@
 import { exec } from 'child_process'
+import logger from '../logger.js'
 
-export default (execString, parameter) =>
+export default (execString, options) =>
   new Promise((resolve, reject) => {
-    const childProcess = exec(execString, parameter)
-    let log = ''
+    logger.debug(`${options.cwd}> ${execString}`)
+    const childProcess = exec(execString, options)
+    let result = ''
     let err = ''
     const formatData = data => {
       data = data.toString().replace(/\r\n/g, '\n').replace(/\r/g, '\n')
       return data
     }
     childProcess.stdout.on('data', async data => {
-      data = formatData(data)
-      log += data
-      // if (logCallback) {
-      //   logCallback(data)
-      // }
+      result += formatData(data)
+      process.stdout.write(data)
     })
     childProcess.stderr.on('data', async data => {
-      data = formatData(data)
-      log += data
-      err += data
-      // if (logCallback) {
-      //   logCallback(data)
-      // }
+      err += formatData(data)
+      process.stderr.write(data)
     })
     childProcess.on('close', async code => {
       if (code !== 0) {
         reject(err)
       } else {
-        resolve(log)
+        logger.trace(result)
+        resolve(result)
       }
     })
   })

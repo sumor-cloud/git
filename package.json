@@ -13,6 +13,7 @@
     "git"
   ],
   "dependencies": {
+    "@sumor/logger": "^1.2.8",
     "fs-extra": "^11.2.0"
   },
   "devDependencies": {
