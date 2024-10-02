@@ -4,6 +4,28 @@ import repo from './assets/repo.js'
 import fse from 'fs-extra'
 
 import entry from '../src/index.js'
+import { execSync } from 'child_process'
+
+function setGitConfigIfNotSetSync(key, defaultValue) {
+  let configValue
+  try {
+    configValue = execSync(`git config --global --get ${key}`, { encoding: 'utf8' }).trim()
+  } catch (error) {
+    console.error(`Error getting git config for ${key}:`, error)
+    return
+  }
+
+  if (configValue === '') {
+    try {
+      execSync(`git config --global ${key} "${defaultValue}"`)
+    } catch (error) {
+      console.error(`Error setting git config for ${key}:`, error)
+    }
+  }
+}
+
+setGitConfigIfNotSetSync('user.email', 'test@sumor.com')
+setGitConfigIfNotSetSync('user.name', 'Automated Test User')
 
 const randomName = () => {
   const randomId = Math.random().toString(36).substring(7)
