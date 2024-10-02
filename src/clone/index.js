@@ -9,10 +9,11 @@ export default async (config, folder, target) => {
 
   // replace windows path
   folder = folder.replace(/\\/g, '/')
-
   const parentFolder = folder.split('/').slice(0, -1).join('/')
   const name = folder.split('/').pop()
   await fse.ensureDir(parentFolder)
+
+  // clone from url
   const url = stringifyUrl(config)
   await cmd(`git clone ${url} ${name}`, { cwd: parentFolder })
 
@@ -21,6 +22,12 @@ export default async (config, folder, target) => {
   }
 
   // check current commit
-  const commit = await cmd(`git rev-parse HEAD`, { cwd: folder })
-  return commit.replace('\n', '')
+  let commit = null
+  try {
+    commit = await cmd(`git rev-parse HEAD`, { cwd: folder })
+    commit = commit.replace('\n', '')
+  } catch (e) {
+    // empty repository
+  }
+  return commit
 }

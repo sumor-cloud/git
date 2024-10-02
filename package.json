@@ -1,17 +1,16 @@
 {
-  "name": "@sumor/git-builder",
+  "name": "@sumor/git",
   "description": "A git version library, easily packaging version and generate specific package with env.",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "license": "MIT",
-  "repository": "sumor-cloud/git-builder",
+  "repository": "sumor-cloud/git",
   "author": "Sumor Cloud Ltd",
-  "homepage": "https://sumor.cloud/git-builder",
+  "homepage": "https://sumor.cloud/git",
   "type": "module",
   "main": "./src/index.js",
   "exports": "./src/index.js",
   "keywords": [
-    "git",
-    "git-builder"
+    "git"
   ],
   "dependencies": {
     "fs-extra": "^11.2.0"

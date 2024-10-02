@@ -1,7 +1,5 @@
-export default options => {
-  let { url, user, username, password, token } = options || {}
-
-  user = user || username
+export default ({ url, user, username, password, token }) => {
+  username = username || user
 
   const urlArr = url.split('/')
 
@@ -11,12 +9,12 @@ export default options => {
     const suffixUrl = urlArr.join('/')
     if (token) {
       return `${protocol}//${token}@${suffixUrl}`
-    } else if (user && password) {
-      return `${protocol}//${user}:${password}@${suffixUrl}`
+    } else if (username && password) {
+      return `${protocol}//${username}:${password}@${suffixUrl}`
     } else {
       return url
     }
   } else {
-    throw new Error('Invalid URL, only http/https is supported.')
+    return url
   }
 }

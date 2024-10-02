@@ -1,33 +1,19 @@
 import clone from './clone/index.js'
-import getTmpDir from './build/getTmpDir.js'
+import Repository from './Repository.js'
 import fse from 'fs-extra'
+import cmd from './clone/cmd.js'
 
-export default async options => {
-  const { url, token, username, password, target, assets, build } = options
-
-  const config = {
-    url,
-    token,
-    username,
-    password
-  }
-
-  const path = getTmpDir()
-
-  const commit = await clone(config, path, target)
-
-  if (assets) {
-    for (const asset of assets) {
-      await fse.copy(asset, path)
+export default async (config, path) => {
+  if (config) {
+    // clone from remote
+    if (!(await fse.exists(path))) {
+      await clone(config, path)
     }
-  }
 
-  if (build) {
-    await build(path)
-  }
-
-  return {
-    commit,
-    path
+    return new Repository(path)
+  } else {
+    // create new repository
+    await fse.ensureDir(path)
+    await cmd(`git init --bare`, { cwd: path })
   }
 }
