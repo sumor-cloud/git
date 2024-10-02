@@ -13,14 +13,15 @@ export default (execString, options) =>
     }
     childProcess.stdout.on('data', async data => {
       result += formatData(data)
-      process.stdout.write(data)
+      // process.stdout.write(data)
     })
     childProcess.stderr.on('data', async data => {
       err += formatData(data)
-      process.stderr.write(data)
+      // process.stderr.write(data)
     })
     childProcess.on('close', async code => {
       if (code !== 0) {
+        logger.error(result)
         reject(err)
       } else {
         logger.trace(result)
