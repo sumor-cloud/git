@@ -1,7 +1,7 @@
 {
   "name": "@sumor/git",
   "description": "A git version library, easily packaging version and generate specific package with env.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "repository": "sumor-cloud/git",
   "author": "Sumor Cloud Ltd",
