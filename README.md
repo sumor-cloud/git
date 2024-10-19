@@ -50,7 +50,8 @@ const repository = await git(config, path)
 
 const commit1 = await repository.currentCommit() // get current commit
 
-const commit2 = await repository.checkout('<target commit>') // can be a branch or a tag or a commit
+await repository.checkout('<target commit>') // can be a branch or a tag or a commit
+const commit2 = await repository.currentCommit() // get current commit
 
 // if you installed Github Desktop, you can use below command to open it in Github Desktop
 await repository.github()
