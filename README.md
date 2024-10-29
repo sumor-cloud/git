@@ -49,6 +49,7 @@ const config = {
 const repository = await git(config, path)
 
 const commit1 = await repository.currentCommit() // get current commit
+const commitTime1 = await repository.currentCommitTime() // get current commit time, in milliseconds
 
 await repository.checkout('<target commit>') // can be a branch or a tag or a commit
 const commit2 = await repository.currentCommit() // get current commit

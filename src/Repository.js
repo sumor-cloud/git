@@ -18,6 +18,11 @@ export default class Repository {
     return commitHash.replace('\n', '')
   }
 
+  async currentCommitTime() {
+    const commitTime = await this.cmd('git show -s --format=%ct HEAD')
+    return parseInt(commitTime.replace('\n', '000'))
+  }
+
   async checkout(target) {
     await this.cmd(`git checkout ${target}`)
   }

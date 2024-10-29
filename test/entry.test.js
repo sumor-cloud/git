@@ -66,7 +66,10 @@ describe('Entry', () => {
       const path = `${root}/checkout`
       const repository = await entry(repo.version, path)
       const commit = await repository.currentCommit()
+      const commitTime = await repository.currentCommitTime()
       expect(commit).toBe('feaacdb722c8d72fa8b4f0aa511bd0cce9f1ef89')
+      expect(typeof commitTime).toBe('number')
+      expect(commitTime).toBeGreaterThan(0)
 
       await repository.checkout('v1.x')
       const commit2 = await repository.currentCommit()
